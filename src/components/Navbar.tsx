@@ -15,16 +15,20 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isCatalog = currentPath === '/catalog' || currentPath.startsWith('/catalog');
+  const isAbout = currentPath === '/about' || currentPath.startsWith('/about');
+  const isHome = !isCatalog && !isAbout;
+
   const [activeSection, setActiveSection] = useState(
-    currentPath === '/about' ? 'about' : currentPath === '/catalog' ? 'catalog' : 'home'
+    isAbout ? 'about' : isCatalog ? 'catalog' : 'home'
   );
 
   useEffect(() => {
-    if (currentPath === '/about') {
+    if (currentPath === '/about' || currentPath.startsWith('/about')) {
       setActiveSection('about');
       return;
     }
-    if (currentPath === '/catalog') {
+    if (currentPath === '/catalog' || currentPath.startsWith('/catalog')) {
       setActiveSection('catalog');
       return;
     }
@@ -64,21 +68,24 @@ export const Navbar: React.FC<NavbarProps> = ({
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     path: string,
-    hash: string
+    href: string
   ) => {
     e.preventDefault();
     setMobileMenuOpen(false);
 
+    // ONLY pass hash if href actually starts with '#'
+    const targetHash = href.startsWith('#') ? href : undefined;
+
     if (onNavigate) {
-      onNavigate(path, hash);
+      onNavigate(path, targetHash);
     } else {
       if (path === '/about' || path === '/catalog') {
         window.location.href = path;
       } else {
         if (window.location.pathname !== '/') {
-          window.location.href = `/${hash}`;
-        } else {
-          const target = document.querySelector(hash);
+          window.location.href = `/${targetHash || ''}`;
+        } else if (targetHash) {
+          const target = document.querySelector(targetHash);
           if (target) {
             target.scrollIntoView({ behavior: 'smooth' });
           }
@@ -110,16 +117,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           <ul className="navbar-links-list">
             {navLinks.map((link) => {
               const isActive =
-                currentPath === '/about'
-                  ? link.id === 'about'
-                  : currentPath === '/catalog'
-                  ? link.id === 'catalog'
-                  : activeSection === link.id && link.id !== 'about' && link.id !== 'catalog';
+                link.id === 'catalog'
+                  ? isCatalog
+                  : link.id === 'about'
+                  ? isAbout
+                  : isHome && activeSection === link.id;
 
               return (
                 <li key={link.id} className="navbar-item">
                   <a
-                    href={link.path === '/about' || link.path === '/catalog' ? link.path : link.href}
+                    href={link.href}
                     onClick={(e) => handleLinkClick(e, link.path, link.href)}
                     className={`navbar-link ${isActive ? 'navbar-link-active' : ''}`}
                   >
@@ -162,16 +169,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             <ul className="navbar-mobile-links">
               {navLinks.map((link) => {
                 const isActive =
-                  currentPath === '/about'
-                    ? link.id === 'about'
-                    : currentPath === '/catalog'
-                    ? link.id === 'catalog'
-                    : activeSection === link.id && link.id !== 'about' && link.id !== 'catalog';
+                  link.id === 'catalog'
+                    ? isCatalog
+                    : link.id === 'about'
+                    ? isAbout
+                    : isHome && activeSection === link.id;
 
                 return (
                   <li key={link.id}>
                     <a
-                      href={link.path === '/about' || link.path === '/catalog' ? link.path : link.href}
+                      href={link.href}
                       onClick={(e) => handleLinkClick(e, link.path, link.href)}
                       className={`navbar-mobile-link ${isActive ? 'navbar-mobile-link-active' : ''}`}
                     >
