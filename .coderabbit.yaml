@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# ==============================================================================
+# INKSPYRA INDUSTRIES — CodeRabbit AI Code Review Configuration
+# ==============================================================================
+
+version: 2
+language: "en-US"
+early_access: false
+
+tone_instructions: >
+  You are reviewing code for INKSPYRA INDUSTRIES, a luxury B2B packaging and custom
+  manufacturing web application built with React 19, TypeScript, Vite, and modern CSS.
+  Maintain a professional, encouraging, and detail-oriented tone. Prioritize review on
+  TypeScript type safety, component accessibility (WCAG AA), responsive performance,
+  and adherence to luxury brand design standards.
+
+reviews:
+  # Review profile: "chill" provides friendly, high-signal reviews without excessive nitpicking
+  profile: "chill"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  sequence_diagrams: true
+
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "main"
+      - "master"
+    ignore_title_keywords:
+      - "wip"
+      - "draft"
+      - "chore(deps)"
+    ignore_usernames:
+      - "dependabot[bot]"
+      - "renovate[bot]"
+
+  # Path filters: focus reviews on application source code and documentation
+  path_filters:
+    - "src/**"
+    - "public/**"
+    - "index.html"
+    - "package.json"
+    - "tsconfig*.json"
+    - "vite.config.ts"
+    - "!**/node_modules/**"
+    - "!dist/**"
+    - "!scratch/**"
+    - "!**/*.log"
+    - "!package-lock.json"
+    - "!public/images/**"
+
+  # Path-specific custom instructions tailored to INKSPYRA INDUSTRIES codebase
+  path_instructions:
+    - path: "src/**/*.{ts,tsx}"
+      instructions: >
+        1. Ensure React 19 and modern TypeScript strictness.
+        2. Use type-only imports (`import type { ... }`) when importing types, adhering to `verbatimModuleSyntax`.
+        3. Enforce accessibility: all interactive elements (buttons, cards, navigation items) must have accessible labels, semantic HTML, and keyboard event handlers (`onKeyDown` handling Enter and Space).
+        4. Validate responsive design: ensure components accommodate mobile (<768px), tablet (768-1024px), and desktop (>1024px) screen sizes.
+        5. Verify that routing and navigation changes preserve clean client-side transitions and synchronize URL parameters (e.g., `window.history.pushState` and popstate listeners) without unintended full-page reloads.
+
+    - path: "src/**/*.css"
+      instructions: >
+        1. Maintain Inkspyra Industries brand palette consistency:
+           - Header & Navbar: Pure White (`#FFFFFF`)
+           - Wine Red / Deep Burgundy: Primary brand accent (`#760D20` / `#8B1A2B`)
+           - Dark Navy: Body text and dark titles (`#0F274A` / `#102747`)
+           - Warm Champagne Gold: Accent badges and highlights (`#C69A52` / `#D8A858`)
+           - Warm Ivory / Cream: Surface backgrounds (`#FAF7F2` / `#FAF2E9`)
+        2. Prevent unwanted horizontal overflows by verifying `overflow-x: clip` or `max-width: 100vw`.
+        3. Protect layering and stacking context (`z-index` hierarchy between stationary fixed layers, navbar (72px), modals, and stacking content cards).
+
+    - path: "src/components/CatalogPage/**"
+      instructions: >
+        1. Verify that catalog category queries (`/catalog?category=<id>`) correctly match the 7 defined categories in `catalogData.ts`.
+        2. Ensure all product images include descriptive alt text, width, height, and proper loading attributes (`eager` for first fold, `lazy` for subsequent items).
+        3. Confirm that clicking any product card or CTA button correctly triggers the B2B Quote Modal with the product title pre-selected.
+
+    - path: "src/components/QuoteModal.tsx"
+      instructions: >
+        1. Ensure inquiry form validation handles required fields (name, email, phone, quantity, message) before submission.
+        2. Verify modal accessibility: focus trapping, Escape key closing, backdrop click dismissal, and proper `aria-modal="true"` attributes.
+
+chat:
+  auto_reply: true

@@ -1,0 +1,194 @@
+/* ==========================================================================
+   INKSPYRA INDUSTRIES — Homepage Statistics Section
+   Full-Width 4-Column Luxury Editorial Layout with Top & Bottom Separators
+   ========================================================================== */
+
+.home-stats-section {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  /* Visual spacing outside the separator lines */
+  padding: clamp(2.5rem, 4vw, 3.75rem) 0;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+/* Content Container spanning the available width with thin top and bottom separator lines */
+.home-stats-container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 3.5vw, 3rem);
+  padding-right: clamp(1.25rem, 3.5vw, 3rem);
+  /* 3–4 cm of responsive visual breathing space above and below the content */
+  padding-top: clamp(3.5rem, 5.5vw, 5.25rem);
+  padding-bottom: clamp(3.5rem, 5.5vw, 5.25rem);
+  /* Thin horizontal separator lines (1px) */
+  border-top: 1px solid rgba(16, 39, 71, 0.12);
+  border-bottom: 1px solid rgba(16, 39, 71, 0.12);
+  box-sizing: border-box;
+}
+
+/* Full-Width 4-Column Grid: Extreme Left to Extreme Right Distribution */
+.home-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+  column-gap: clamp(1rem, 2.5vw, 3rem);
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/* Base Column Style */
+.home-stat-col {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Extreme Left-to-Right Alignment Flow on Desktop */
+.home-stat-col:first-child {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.home-stat-col:first-child .home-stat-label {
+  text-align: left;
+}
+
+.home-stat-col:nth-child(2),
+.home-stat-col:nth-child(3) {
+  align-items: center;
+  text-align: center;
+}
+
+.home-stat-col:nth-child(2) .home-stat-label,
+.home-stat-col:nth-child(3) .home-stat-label {
+  text-align: center;
+}
+
+.home-stat-col:last-child {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.home-stat-col:last-child .home-stat-label {
+  text-align: right;
+}
+
+/* Number Value Area (+20% Scale Increase) */
+.home-stat-value-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  line-height: 1;
+}
+
+.home-stat-number {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  /* 20% larger than previous size: clamp(3.3rem, 6.25vw, 5.25rem) */
+  font-size: clamp(3.3rem, 6.25vw, 5.25rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #102747; /* Deep near-black navy */
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.home-stat-suffix {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.9em;
+  line-height: 1;
+  color: #102747;
+  margin-left: 2px;
+}
+
+/* Descriptive Labels Underneath (Proportionally Scaled) */
+.home-stat-label {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  /* Proportionally increased font size */
+  font-size: clamp(0.85rem, 1.05vw, 1.02rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(16, 39, 71, 0.76); /* Dark charcoal */
+  margin-top: clamp(0.85rem, 1.3vw, 1.25rem);
+  margin-bottom: 0;
+  max-width: 240px;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+
+/* Tablet (768px – 1024px): Preserves 4-Column Layout with Balanced Spacing */
+@media (max-width: 1024px) {
+  .home-stats-container {
+    padding-top: clamp(2.75rem, 4.5vw, 4rem);
+    padding-bottom: clamp(2.75rem, 4.5vw, 4rem);
+  }
+
+  .home-stats-grid {
+    column-gap: clamp(0.75rem, 1.5vw, 2rem);
+  }
+
+  .home-stat-number {
+    font-size: clamp(2.65rem, 4.6vw, 3.85rem);
+  }
+
+  .home-stat-label {
+    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+    max-width: 190px;
+  }
+}
+
+/* Mobile (< 768px): Balanced 2-Column Grid */
+@media (max-width: 767px) {
+  .home-stats-section {
+    padding: 2rem 0;
+  }
+
+  .home-stats-container {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .home-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 2.75rem;
+    column-gap: 1.5rem;
+  }
+
+  /* Centered Alignment for 2-Column Mobile Grid */
+  .home-stat-col:first-child,
+  .home-stat-col:nth-child(2),
+  .home-stat-col:nth-child(3),
+  .home-stat-col:last-child {
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-stat-col:first-child .home-stat-label,
+  .home-stat-col:nth-child(2) .home-stat-label,
+  .home-stat-col:nth-child(3) .home-stat-label,
+  .home-stat-col:last-child .home-stat-label {
+    text-align: center;
+    max-width: 170px;
+  }
+
+  .home-stat-number {
+    font-size: clamp(2.6rem, 8.8vw, 3.6rem);
+  }
+
+  .home-stat-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.07em;
+    margin-top: 0.65rem;
+  }
+}

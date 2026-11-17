@@ -1,0 +1,642 @@
+/* ==========================================================================
+   INKSPYRA INDUSTRIES — LUXURY PRODUCT CATALOG PAGE STYLES
+   Inspired by Reference Screenshot (Warm Ivory, Wine Red, Deep Navy & Gold)
+   ========================================================================== */
+
+.catalog-page-wrapper {
+  background-color: #FAF7F2;
+  color: var(--text-primary, #0F274A);
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+  overflow-x: clip;
+}
+
+.catalog-container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   1. HERO BANNER — Wide, Luxurious Editorial Banner
+   ========================================================================== */
+.catalog-hero-banner {
+  background: linear-gradient(110deg, #FAF7F2 0%, #F5ECE0 45%, #EFE0CF 75%, #E6D2BF 100%);
+  border-bottom: 1px solid rgba(139, 26, 43, 0.08);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2rem, 4vw, 3.25rem) 0 clamp(1.75rem, 3.5vw, 2.75rem) 0;
+}
+
+.catalog-hero-container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  box-sizing: border-box;
+}
+
+.catalog-hero-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.catalog-eyebrow-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.catalog-eyebrow-line {
+  display: inline-block;
+  width: 32px;
+  height: 1.5px;
+  background-color: #8B1A2B;
+}
+
+.catalog-eyebrow-text {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #8B1A2B;
+  text-transform: uppercase;
+}
+
+.catalog-hero-headline {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(2.35rem, 4.4vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  margin: 0 0 1rem 0;
+}
+
+.hero-navy-title {
+  display: block;
+  color: #0F274A;
+}
+
+.hero-maroon-italic {
+  display: block;
+  color: #760D20;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.catalog-hero-description {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(0.96rem, 1.25vw, 1.1rem);
+  color: #475467;
+  line-height: 1.6;
+  max-width: 540px;
+  margin: 0;
+}
+
+/* Right Column: Hero Visual with soft blend */
+.catalog-hero-visual-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.catalog-hero-image-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 40px -10px rgba(118, 13, 32, 0.16),
+    0 8px 18px -4px rgba(15, 39, 74, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.catalog-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-hero-image-wrap:hover .catalog-hero-img {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   2. HORIZONTAL CATEGORY NAVIGATION — 7 Refined Tiles
+   ========================================================================== */
+.catalog-category-nav-section {
+  background-color: #FAF7F2;
+  padding: 1.75rem 0 0.75rem 0;
+  position: relative;
+}
+
+.category-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: clamp(8px, 1.1vw, 14px);
+  width: 100%;
+}
+
+.category-nav-tile {
+  background-color: #FFFFFF;
+  border: 1.5px solid rgba(139, 26, 43, 0.08);
+  border-radius: 14px;
+  padding: 1.15rem 0.65rem 1rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.6rem;
+  color: #0F274A;
+  box-shadow: 0 3px 10px rgba(15, 39, 74, 0.03);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.category-tile-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #760D20;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.category-tile-name {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(0.78rem, 0.92vw, 0.88rem);
+  font-weight: 600;
+  line-height: 1.25;
+  transition: color 0.25s ease;
+}
+
+.category-nav-tile:hover:not(.category-nav-tile-active) {
+  transform: translateY(-3px);
+  border-color: rgba(139, 26, 43, 0.25);
+  box-shadow: 0 8px 20px -2px rgba(118, 13, 32, 0.1);
+}
+
+.category-nav-tile:hover:not(.category-nav-tile-active) .category-tile-icon-wrap {
+  transform: scale(1.08);
+}
+
+/* ACTIVE TILE: Solid Deep Burgundy with White Text & Icon */
+.category-nav-tile-active {
+  background-color: #760D20 !important;
+  border-color: #760D20 !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    0 10px 24px -2px rgba(118, 13, 32, 0.35),
+    0 4px 10px rgba(118, 13, 32, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+.category-nav-tile-active .category-tile-icon-wrap {
+  color: #FFFFFF !important;
+}
+
+.category-nav-tile-active .category-tile-name {
+  color: #FFFFFF !important;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   3. BREADCRUMBS
+   ========================================================================== */
+.catalog-breadcrumbs-bar {
+  padding: 1rem 0 1.5rem 0;
+}
+
+.catalog-breadcrumbs-nav {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbs-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.84rem;
+}
+
+.breadcrumb-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: #667085;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+  color: #760D20;
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: #98A2B3;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-current {
+  color: #760D20;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   4. CATEGORY SECTION HEADER & DECORATIONS
+   ========================================================================== */
+.catalog-content-section {
+  padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.catalog-content-section.is-fading {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.catalog-content-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.catalog-section-header {
+  margin-bottom: clamp(2rem, 3.5vw, 2.75rem);
+  max-width: 860px;
+}
+
+.category-header-eyebrow-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.category-header-line {
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background-color: #8B1A2B;
+}
+
+.category-header-eyebrow {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #8B1A2B;
+  text-transform: uppercase;
+}
+
+.catalog-section-title {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(2.15rem, 3.8vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.85rem 0;
+}
+
+.title-prefix {
+  color: #0F274A;
+}
+
+.title-highlight {
+  color: #760D20;
+  font-style: italic;
+}
+
+.catalog-section-description {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  color: #475467;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 720px;
+}
+
+/* ==========================================================================
+   5. PRODUCT CARDS GRID — 3 Columns Desktop | 2 Tablet | 1 Mobile
+   ========================================================================== */
+.catalog-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2vw, 1.85rem);
+}
+
+.catalog-product-card {
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid rgba(139, 26, 43, 0.08);
+  box-shadow: 
+    0 8px 24px -4px rgba(15, 39, 74, 0.05),
+    0 2px 6px rgba(15, 39, 74, 0.02);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  outline: none;
+  transition: 
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
+  animation: cardFadeUp 0.45s ease forwards;
+}
+
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.catalog-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 18px 36px -4px rgba(118, 13, 32, 0.12),
+    0 6px 14px -2px rgba(15, 39, 74, 0.06);
+  border-color: rgba(139, 26, 43, 0.28);
+}
+
+/* Image Container */
+.product-card-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: #F8F5F0;
+}
+
+.product-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-product-card:hover .product-card-img {
+  transform: scale(1.05);
+}
+
+.product-category-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  color: #760D20;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(139, 26, 43, 0.12);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Footer */
+.product-card-footer {
+  padding: 1.15rem 1.25rem 1.25rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: #FFFFFF;
+  flex: 1 0 auto;
+}
+
+.product-card-text {
+  flex: 1 1 auto;
+}
+
+.product-card-title {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0F274A;
+  margin: 0;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.catalog-product-card:hover .product-card-title {
+  color: #760D20;
+}
+
+.product-card-description {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  color: #667085;
+  margin: 0.35rem 0 0 0;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Circular Burgundy Action Button (Arrow Right) */
+.product-card-action-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #760D20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(118, 13, 32, 0.24);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-product-card:hover .product-card-action-btn {
+  background-color: #92132A;
+  transform: scale(1.1) translateX(2px);
+  box-shadow: 0 6px 16px rgba(118, 13, 32, 0.38);
+}
+
+/* ==========================================================================
+   6. CUSTOM SOLUTIONS ENQUIRY BANNER
+   ========================================================================= */
+.custom-project-inquiry-banner {
+  margin-top: 3.5rem;
+  background: linear-gradient(135deg, #0F274A 0%, #1A3865 60%, #560F1E 100%);
+  border-radius: 20px;
+  padding: clamp(2rem, 3.5vw, 2.75rem);
+  box-shadow: 0 16px 36px -8px rgba(15, 39, 74, 0.24);
+  color: #FFFFFF;
+}
+
+.custom-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.custom-banner-icon-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(216, 168, 88, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.custom-banner-text {
+  flex: 1 1 340px;
+}
+
+.custom-banner-heading {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.5rem, 2.4vw, 1.95rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: #FFFDF9;
+}
+
+.custom-banner-sub {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.custom-banner-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: #FAF3EC;
+  color: #0E2038;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.9rem 1.85rem;
+  border-radius: 9999px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.custom-banner-cta-btn:hover {
+  background-color: #FFFFFF;
+  color: #760D20;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
+}
+
+/* ==========================================================================
+   7. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1140px) {
+  .category-tiles-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .catalog-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 959px) {
+  .catalog-hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .catalog-eyebrow-container {
+    justify-content: center;
+  }
+
+  .catalog-hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .catalog-hero-image-wrap {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  .catalog-section-header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .category-header-eyebrow-wrap {
+    justify-content: center;
+  }
+
+  .catalog-section-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .category-tiles-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .catalog-products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .product-card-image-wrap {
+    aspect-ratio: 16 / 11;
+  }
+
+  .custom-banner-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .custom-banner-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
